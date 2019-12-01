@@ -68,11 +68,49 @@ a:hover {
   }
 }
 
-//main-container全局样式
-.app-main {
-  min-height: 100%
+// 主体区域 Main container
+.main-container {
+  position: relative;
+  height: 100%;
+
+  //main-container全局样式
+  .app-main {
+    height: calc(100vh - 50px);
+    background: url("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1599380631,2973673148&fm=26&gp=0.jpg") no-repeat center center;
+    background-size: cover;
+
+    .app-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
 }
 
-.app-container {
-  padding: 20px;
+.flex-horizontal {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.flex-vertica {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.my-scrollbar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
 }
