@@ -22,5 +22,9 @@ Mock.mock(/\/user\/logout/, 'post', userAPI.logout)
 
 // Table
 Mock.mock(/\/table\/list/, 'get', tableAPI.list)
+Mock.mock(/\/table\/getDictByTypes/, 'post', tableAPI.getDictByTypes)
+Mock.mock(/\/table\/getMoviesByName/, 'post', tableAPI.getMoviesByName)
+Mock.mock(/\/table\/getSearchConditions/, 'post', tableAPI.getSearchConditions)
+Mock.mock(/\/table\/getMoviesByConditions/, 'post', tableAPI.getMoviesByConditions)
 
 export default Mock

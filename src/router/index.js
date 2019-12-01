@@ -46,7 +46,7 @@ export const constantRouterMap = [
         path: 'movie-house',
         name: 'movie-house',
         component: () => import('@/views/repository/movie_house/index'),
-        meta: {title: '电影天堂', icon: 'form'}
+        meta: {title: '电影天堂', icon: 'eye-open'}
       }
     ]
   },
@@ -59,7 +59,7 @@ export const constantRouterMap = [
         path: 'index',
         name: 'movie-edit',
         component: () => import('@/views/form/MovieEdit'),
-        meta: {title: '增加电影', icon: 'example'}
+        meta: {title: '增加电影', icon: 'form'}
       }
     ]
   },

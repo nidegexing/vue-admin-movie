@@ -193,7 +193,7 @@
           name: '海上钢琴师',
           englishName: 'The Legend of 1900',
           filePath: 'D:\\movie\\The Legend of 1900.rmvb',
-          pictureUrl: '//image.dafenqi.online/image/movie/batman.jpg',
+          pictureUrl: '//image.baidu.com/image/movie/batman.jpg',
           shootArea: '',
           releaseDate: '',
           review: '',
@@ -218,24 +218,7 @@
         //return
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            if (this.formData.id) {
-              this.formData.editType = 'update'
-            } else {
-              this.formData.editType = 'add'
-            }
-            //调用api接口
-            apis.getList(this.formData).then(res => {
-              let data = res.data;
-              console.log("/movie/updateItem", data.result);
-              if (data.status == 'ok') {
-                this.$message.success('success');
-                this.reSet()
-              } else {
-                this.$message.error(data.result);
-              }
-            }).catch(error => {
-              console.log(error);
-            });
+            this.$message.success('success');
           } else {
             console.log('error submit!!');
           }
@@ -250,7 +233,7 @@
           name: '',
           englishName: 'The Legend of 1900',
           filePath: 'D:\\movie\\The Legend of 1900.rmvb',
-          pictureUrl: '//image.dafenqi.online/image/movie/batman.jpg',
+          pictureUrl: '//image.baidu.com/image/movie/batman.jpg',
           shootArea: '',
           releaseDate: '',
           review: '',
@@ -292,42 +275,17 @@
           this.$refs.saveInputTag.$refs.input.focus();
         });
       },
-      getType(index) {
-        if (index % 5 == 0) return '';
-        if (index % 5 == 1) return 'success';
-        if (index % 5 == 2) return 'info';
-        if (index % 5 == 3) return 'warning';
-        if (index % 5 == 4) return 'danger';
-      },
       initDicts() {
         //调用api接口
         let sendData = {
           dictTypes: ['country_area_string', 'movie_type']
         }
-        apis.getList(sendData).then(res => {
-          console.log("/commonTable/getDictByTypes", res.data);
+        apis.getDictByTypes(sendData).then(res => {
+          console.log("/table/getDictByTypes", res.data);
           let respData = res.data.result
           if (res.data.status == 'ok') {
             this.shootAreaDict = respData[0]
             this.movieTypeDict = respData[1]
-          }
-        }).catch(error => {
-          console.log(error);
-        });
-      },
-      handleGetMovieByid(val) {
-        //console.log('handleGetMovieByid---->', val)
-        let sendData = {
-          id: this.formData.id
-        }
-        //调用api接口
-        apis.getList(sendData).then(res => {
-          let data = res.data;
-          console.log("/movie/getMovieByid", data.result);
-          if (data.status == 'ok') {
-            this.formData = data.result
-          } else {
-            this.$message.error(data.result);
           }
         }).catch(error => {
           console.log(error);
@@ -343,7 +301,7 @@
           searchName: this.searchName
         }
         //调用api接口
-        apis.getList(sendData).then(res => {
+        apis.getMoviesByName(sendData).then(res => {
           let data = res.data;
           console.log("/movie/getMoviesByName", data.result);
           if (data.status == 'ok') {

@@ -10,12 +10,14 @@
           placeholder="电影名/EngLishName"
           @blue="getMoviesByConditions"
           clearable
+          size="mini"
         />
         <el-button
           type="primary"
           icon="el-icon-search"
           @click="getMoviesByConditions"
           style="margin-left: 1rem;"
+          size="mini"
         >搜索
         </el-button>
       </div>
@@ -113,13 +115,18 @@
       this.getSearchConditions()
     },
     methods: {
+      randomBetween(lower, upper) {
+        return Math.floor(Math.random() * (upper - lower + 1)) + lower
+      },
       getMoviesByConditions() {
         let sendData = this.checkedCondition
-        apis.getList(sendData).then(response => {
+        apis.getMoviesByConditions(sendData).then(response => {
           console.log('/movie/getMoviesByConditions', response.data)
           let respData = response.data;
           if (respData.status == 'ok') {
-            this.movieList = respData.result
+            let index = this.randomBetween(1, 5)
+            //console.log('index---->', index)
+            this.movieList = respData.result.splice(index, 2)
           } else {
             this.movieList = []
             this.$message.error("没有符合条件的影片！")
@@ -130,7 +137,7 @@
       },
       getSearchConditions() {
         let sendData = {}
-        apis.getList(sendData).then(response => {
+        apis.getSearchConditions(sendData).then(response => {
           console.log('/movie/getSearchConditions', response.data)
           let respData = response.data;
           if (respData.status == 'ok') {
@@ -391,7 +398,7 @@
           position: relative;
           width: $width-movie-item;
           height: $height-movie-pic;
-          //background: url("//image.dafenqi.online/image/movie/batman.jpg") no-repeat center center;
+          //background: url("//image.baidu.com/image/movie/batman.jpg") no-repeat center center;
           background: no-repeat center center;
           background-size: 100%;
         }

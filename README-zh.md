@@ -3,7 +3,8 @@
 详细使用手册见官网：https://panjiachen.github.io/vue-element-admin-site/zh/  
 
 ## 主要功能
-一个电影分类浏览的项目，用于影迷收藏自己的电影，分类整理。
+一个电影分类浏览的项目，用于影迷收藏自己的电影，分类整理。  
+数据部分使用了MockServer，模拟请求。
 
 ## 使用说明
 需要本地已经搭建好Node环境
